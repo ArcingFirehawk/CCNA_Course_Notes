@@ -1,114 +1,30 @@
-# 8. IPv4 ADDRESSING : PART 2
+# IPv4 Addressing Pt. 2
 
-MAXIMUM HOSTS PER NETWORK
+## Calculating a Network's Address Space
++ Maximimum Hosts per Network = 2^n - 2
+  + n = # of Host Bits
+  + AKA # of usable IP addresses.
+  + E.g., The # of usuable host for 192.168.1.0/24 is 2^8 - 2 = 254.
++ The first usable IP address is the network address plus 1; in binary 00000000 to 00000001.
++ The last usable IP address is the broadcast address minus 1 in binary 11111111 to 11111110.
++ Graphic: IPv4 Address Classes
+![image](CCNA_COURSE_NOTES\Graphics\day08_image01.png)
 
-Let's take a Class C Network:
+## Configuring a CISCO Router with IP Addresses
++ The `show ip interface brief` command in priviledged EXEC mode shows the status of each interface on the device and their IP addresses.
+  + Columns: Interface, IP-Address; OK?, legacy feature (probably not in use); Method, indicates the method in which the interface was assigned an IP address; Status, interface's Layer 1 status; Protocol, interface's Layer 2 status.
++ "administratively down" means that the interface has been disabled with the `shutdown` command.
++ A CISCO router's interfaces are administratively down by default.
++ A CISCO switch's interfaces are <mark>not</mark> administratively down by default.
++ `interface <name of interface>` in global config mode to enter interface config mode.
++ `ip address <IP address> <subnet mask in decimal notation>` to set the IP address of the interface.
++ `no shutdown` enables an interface.
++ Note: use `do show ip interface brief` in interface config mode to execute the command.
++ `show interfaces <interface>` shows Layer 1, layer 2, and Layer 3 information of the interface.
++ `show interfaces description` shows the interfaces descriptions, which are optional, but are helpful in identifying the purpose of each interface.
+   + Use `description <description>` in interface config mode to set descriptions.
++ Use `end` to exit interface config mode into user EXEC mode.
 
-192.168.1.0/24
-
-(gives a range of 0 ---> 255)
-
-Said another way, the HOST portion (the .0) is equal to 8 bits so...
-
-Host portion = 8 bits = 2^8 = 256
-
-HOWEVER, since the Network Address (Network ID)
-
-192.168.1.0 is Reserved
-
-AND
-
-192.168.1.255 (BROADCAST ADDRESS) is ALSO reserved.
-
-The MAXIMUM Hosts per Network = 2^8-2 = 254 hosts
-
----
-
-What about a Class B Network ?
-
-172.16.0.0/16 ----> 172.16.255.255/16
-
-Host portion = 16 bits = 2^16 = 65,536
-
-Maximum hosts per network = 2^16-2 = 65,534 hosts
-
----
-
-What about a Class A Network ?
-
-10.0.0.0/8 -------------> 10.255.255.255/8
-
-Host portion = 24 bits = 2^24 = 16,777,216
-
-Maximum hosts per network = 2^24-2 = 16,777,214 hosts
-
----
-
-THEREFORE:
-
-The formula for calculating the number of HOSTS on a network is:
-
-2 ^ N - 2 (2 to the power of N - 2)
-
-where N = number of HOST bits
-
----
-
-FIRST / LAST USABLE ADDRESSES
-
-Class C Network
-
-192.168.1.0/24 (NETWORK ADDRESS)
-
-Add 1 so the Host Portion = 00000001
-
-192.168.1.1/24 = FIRST USABLE ADDRESS
-
----
-
-192.168.1.255/24 (BROADCAST ADDRESS)
-
-Subtract 1 from the BROADCAST ADDRESS = 11111110
-
-192.168.1.254/24 = LAST USABLE ADDRESS
-
----
-
-Class B Network
-
-172.16.0.0/16 (NETWORK ADDRESS)
-
-Add 1 to Host portion so 0000 0000 0000 0001
-
-172.16.0.1/16 is the FIRST USABLE ADDRESS
-
----
-
-172.16.255.255/16 (BROADCAST ADDRESS)
-
-Subtract 1 to Broadcast Address so 1111 1111 1111 1110
-
-172.16.255.254/16 is the LAST USABLE ADDRESS
-
----
-
-Class A Network
-
-10.0.0.0/8 (NETWORK ADDRESS)
-
-Add 1 to Host portion so 00000000 00000000 00000001
-
-10.0.0.1/8 is the FIRST USABLE ADDRESS
-
----
-
-10.255.255.255/8 (BROADCAST ADDRESS)
-
-Subtract 1 to Broadcast Address so 1111 1111 1111 1110
-
-10.255.255.254/16 is the LAST USABLE ADDRESS
-
----
 
 CISCO CLI DEVICE CONFIGURATION
 

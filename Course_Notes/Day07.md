@@ -1,13 +1,15 @@
-# 7. IPv4 ADDRESSING : PART 1
+# IPv4 Addressing Pt. 1
 
-OSI MODEL - NETWORK LAYER (Layer 3)
+## Review
++ OSI Model Network Layer (Layer 3)
+  + Provides connectivity between end hosts on DIFFERENT networks (ie: outside of the LAN)
+  + Provides logical addressing (IP addresses)
+  + Provides path selection between SOURCE and DESTINATION
+  + ROUTERS operate at LAYER 3
++ Broadcasts don't go beyond the local network.
 
-- Provides connectivity between end hosts on DIFFERENT networks (ie: outside of the LAN)
-- Provides logical addressing (IP addresses)
-- Provides path selection between SOURCE and DESTINATION
-- ROUTERS operate at LAYER 3
 
-ROUTING
+## ROUTING
 
 SWITCHES (Layer 2 Devices) do no separate different networks. They connect and EXPAND networks within the same LAN.
 
@@ -45,20 +47,15 @@ All of these addresses are on the SAME Network because the NETWORK PORTION of th
 
 When a BROADCAST message hits a ROUTER, it does NOT continue onward. It stays within the LOCAL LAN (Switch/Hosts).
 
----
-
-IPv4 HEADER
-
+## IPv4 Header
 ![image](https://github.com/psaumur/CCNA/assets/106411237/4f4bd7da-1876-4000-8229-be4b8792a86d)
 
 
-IP (or Internet Protocol) is the primary Layer 3 protocol in use today. Version 4 is the version in use in most networks.
-
-IPv4 Headers contain MORE fields than the ETHERNET header.
-
-IPv4 Headers contain a SOURCE IP Address and DESTINATION IP Address field.
-
-This FIELD is 32-bits(4-bytes) in length (0-31)
++ Internet Protocol (IP) is the primary Layer 3 protocol in use today.
+  + Version 4 is the version in use in most networks.
++ Has more fields than the Ethernet header.
++ Contain a Source IP Address and Destination IP Address field.
+  + These fields are 32-bits(4-bytes) in length (0-31).
 
 192.168.1.254 (each decimal number represents 8 bits)
 
@@ -264,10 +261,13 @@ The IPv4 address is: 12.128.251.23/8
 
 ---
 
-IPv4 ADDRESS CLASSES
+## IPv4 Address Classes
++ IPv4 ADDRESSES are split up into 5 different 'classes'.
+  + The class of an IPv4 is determined by the <mark>first octet</mark> of the address.
++ Graphic: IPv4 Address Classes
+![image](https://github.com/psaumur/CCNA/assets/106411237/3d414956-cb53-46f6-b386-3fc9bba11802)
 
-IPv4 ADDRESSES are split up into 5 different 'classes'.
-The class of an IPv4 is determined by the FIRST OCTET of the address.
++ 
 
 CLASS 		FIRST OCTET 		FIRST OCTET NUMBERIC RANGE
 
@@ -281,7 +281,7 @@ From the above chart, if the FIRST OCTECT STARTS with 0, the numeric RANGE of po
 
 The CLASSES we will be focusing on are CLASS A to CLASS C.
 
-![image](https://github.com/psaumur/CCNA/assets/106411237/7cc286bf-ce76-4eee-af52-062a63dac2b4)
+![image](CCNA_COURSE_NOTES\Graphics\day07_image01.png)
 
 
 D CLASS are reserved for 'MULTICAST' ADDRESSES
@@ -339,10 +339,14 @@ NETWORK ADDRESSES
 
 If the HOST PORTION of an IP ADDRESS is ALL 0's, it means it is the NETWORK ADDRESS = the identifier of the network itself.
 
-Example: 192.168.1.0/24 = THIS is a NETWORK ADDRESS.
-
-A NETWORK ADDRESS cannot be assigned to a HOST.
-A NETWORK ADDRESS is the FIRST ADDRESS.
++ Network Address
+  + Cannot be assigned to a host.
+  + The first address in a subnet.
+  + E.g., In the network 192.168.2.0/24, the network address is 192.168.2.0.
++ Broadcast Address
+  + When the host portion of an IP address is <mark>all</mark> 1's.
+  + Cannot be assigned to a host.
+  + E.g., In the network 192.168.2.0/24, the broadcast address is 192.168.2.255.
 
 ![image](https://github.com/psaumur/CCNA/assets/106411237/53eafb43-2a6f-422c-af19-866946d78efa)
 
